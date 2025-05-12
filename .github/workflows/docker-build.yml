@@ -2,9 +2,9 @@ name: Docker Build and Push
 
 on:
   push:
-    branches: ['main']
+    branches: ['master']
   pull_request:
-    branches: ['main']
+    branches: ['master']
 
 env:
   DOCKER_IMAGE_NAME: duck3009/pnb309-repoostiory

@@ -33,7 +33,8 @@ jobs:
           context: ./backend
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
-            ${{ env.DOCKER_IMAGE_NAME }}:${{env.SERVICE_NAME}}_latest
-            ${{ env.DOCKER_IMAGE_NAME }}:${{env.SERVICE_NAME}}_${{ env.DOCKER_IMAGE_TAG }}
-          cache-from: type=registry,ref=${{ env.DOCKER_IMAGE_NAME }}:${SERVICE_NAME}_buildcache
-          cache-to: type=registry,ref=${{ env.DOCKER_IMAGE_NAME }}:${SERVICE_NAME}_buildcache,mode=max
+            ${{ env.DOCKER_IMAGE_NAME }}:${{ env.SERVICE_NAME }}_latest
+            ${{ env.DOCKER_IMAGE_NAME }}:${{ env.SERVICE_NAME }}_${{ env.DOCKER_IMAGE_TAG }}
+          cache-from: type=registry,ref=${{ env.DOCKER_IMAGE_NAME }}:${{ env.SERVICE_NAME }}_buildcache
+          cache-to: type=registry,ref=${{ env.DOCKER_IMAGE_NAME }}:${{ env.SERVICE_NAME }}_buildcache,mode=max
+          load: ${{ github.event_name == 'pull_request' }}
